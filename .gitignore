@@ -7,3 +7,5 @@ target
 .clover
 .settings
 .eclipse
+.classpath
+.project
