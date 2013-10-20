@@ -1,0 +1,63 @@
+
+##########################
+ Instructions for Jms lab
+##########################
+
+
+###
+### Part 1 - Server side. Create a JMS service activator. Steps:
+###
+
+1. In the no.arktekk.training.springserviceactivator package add a method to 
+class CreateAuctionServiceActivatorImpl (and add it to the interface). The
+method should accept and Auction object as in-parameter. The method should
+call the newAuction method on AuctionService. Also a console log statement
+to show in the log that the method has been called.
+
+2. Spring-configure CreateAuctionServiceActivatorImpl in the applicationContext.xml file.
+Just a regular xml bean definition will do. (Or component-scan it if you prefer.)
+
+3. Also in applicationContext.xml - Create an embedded Active MQ message broker. See below:
+    <bean id="broker" class="org.apache.activemq.xbean.BrokerFactoryBean">
+        <property name="config" value="classpath:jms-infrastructure-activemq.xml" />
+        <property name="start" value="true" />
+    </bean>
+    
+4. Also in applicationContext.xml - Create a Spring message-driven listener container.
+Hint:
+    <jms:listener-container message-converter="myConverter"
+        connection-factory="myConnectionFactory" concurrency="1">
+        
+        <jms:listener destination="createAuctionServiceQueue"
+            ref="...your service activator here..." method="...your method name here..." />
+            
+    </jms:listener-container>
+Note that this refers to imported JMS configuration beans from jms-infra.xml. Inspect that file
+to see whats there.
+
+5. Start the (server-side) application by running the JmsServer class
+If successful you should see a nice clean console log. You should see the init log from
+your service activator class 'Initializing CreateAuctionServiceActivatorImpl'
+
+
+###
+### Part 2 - Client side. Create a JMS endpoint. Steps:
+###
+
+6. In the AuctionCreator class (in endpoint.impl package) create a method to send an auction 
+message using a JmsTemplate.
+The method should have this signature 'yourMethodNameHere(String description, double price)'
+A JmsTemplate pre-exists in the configuration and can be autowired into your class.
+Hint:
+    public void sendAuctionMessage(String description, double price) {
+        jms.convertAndSend(new Auction(null, price, description, ..., ..., null));
+    }
+    
+7. Spring configure the AuctionCreator in jms-client.xml. Regular xml bean definition
+or component-scanning - your choice.
+
+8. Inspect, understand and complete the JmsClient class. It has a todo-step.
+
+9. Run this class to send messages.
+
+10. Enjoy.

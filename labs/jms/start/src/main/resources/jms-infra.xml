@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd">
+
+		
+	<bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="classesToBeBound">
+			<list>
+				<value>no.arktekk.training.spring.domain.Auction</value>
+				<value>no.arktekk.training.spring.domain.AuctionList</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="myConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<!--  <property name="brokerURL" value="vm://localhost?broker.persistent=false" /> -->
+	</bean>	
+
+	<bean id="createAuctionServiceQueue" class="org.apache.activemq.command.ActiveMQQueue">
+	   <constructor-arg value="createAuctionServiceQueue"/>
+	</bean>
+	
+	<bean id="myConverter"
+		class="org.springframework.jms.support.converter.MarshallingMessageConverter">
+		<constructor-arg ref="jaxb2Marshaller" />
+		<property name="targetType" value="TEXT"/>
+	</bean>
+	
+	<bean id="myJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<constructor-arg ref="myConnectionFactory"></constructor-arg>
+		<property name="defaultDestination" ref="createAuctionServiceQueue" />
+		<property name="messageConverter" ref="myConverter" />
+	</bean>	
+	
+</beans>

@@ -1,0 +1,25 @@
+
+#################################
+ Instructions for Scheduling Lab
+#################################
+
+1. Define the worker
+Create a new class called no.arktekk.training.spring.task.AuctionCounter (or similiar). 
+	- Create a method in this class (for example called 'countActions') that calls 
+	AuctionRepository.listAllRunningAuctions method and prints to system.out the 
+	number of auctions returned.
+	Hint: dependency inject with autowiring an AuctionRepository for use.
+	- Annotate the class with @Component or make it a Spring Bean in some
+	other way
+
+2. Configure scheduling support
+In applicationContext.xml add: <task:annotation-driven />
+
+3. Define the trigger
+On the method created in step one - annotate with @Scheduled. Make the trigger
+fire every 10 seconds.
+
+4. Run application
+Run web application by 'Run As:Java Application' on AuctionApp.
+Observe loggings every 10 seconds in console windows coming from task.
+Note that http://localhost:8080/index.html has a small form for adding new auctions.

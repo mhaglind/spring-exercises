@@ -1,0 +1,9 @@
+<Auction 
+	id="123456" 
+	description="" 
+	minimumPrice="2.0" 
+	startDateTime="2013-01-01" 
+	expiresDateTime="2013-02-03">
+	<Album id="123456" title="Barney" artist="Rihanna" />
+	<Album id="234567" title="Farley" artist="Nerbert" />
+</Auction>

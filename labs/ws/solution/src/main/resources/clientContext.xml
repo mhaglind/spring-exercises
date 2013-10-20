@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="accountWebService" 
+	class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+	    <property name="serviceInterface" value="no.arktekk.training.spring.ws.AuctionServiceEndpoint"/>
+	    <property name="wsdlDocumentUrl" value="http://localhost:8089/AuctionWebService?wsdl"/>
+	    <property name="namespaceUri" value="http://ws.spring.training.arktekk.no/"/>
+	    <property name="serviceName" value="AuctionWebService"/>
+	    <property name="portName" value="AuctionServiceEndpointImplPort"/>
+	</bean>
+
+</beans>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<import resource="classpath:common/jms-infra.xml" />
+
+	<context:component-scan base-package="no.arktekk.training.spring">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<aop:aspectj-autoproxy />
+	<task:annotation-driven />
+	<tx:annotation-driven />
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<constructor-arg ref="dataSource" />
+	</bean>
+
+	<bean id="dataSource"
+		class="no.arktekk.training.spring.config.TestDataSourceFactoryBean" />
+
+	<bean id="testDataPopulator" class="no.arktekk.training.spring.config.TestDataPopulator">
+		<constructor-arg ref="dataSource" />
+	</bean>
+
+	<!-- Message-driven Pojo -->
+	<bean id="serviceActivator"
+		class="no.arktekk.training.spring.serviceactivator.impl.CreateAuctionServiceActivatorImpl" />
+
+	<!-- Embedded ActiveMQ middleware -->
+	<bean id="embeddedBroker" class="org.apache.activemq.xbean.BrokerFactoryBean">
+		<property name="config" value="classpath:server/jms-infrastructure-activemq.xml" />
+		<property name="start" value="true" />
+	</bean>
+
+	<!-- Configuration of Spring JMS container and service activators -->
+	<jms:listener-container message-converter="jaxbMessageConverter"
+		connection-factory="activeMqConnectionFactory" concurrency="1">
+		<jms:listener destination="createAuctionServiceQueue"
+			ref="serviceActivator" method="createNewAuction" />
+	</jms:listener-container>
+
+	<bean id="repoAspect" class="no.arktekk.training.spring.aspect.RepositoryMonitor" />
+
+</beans>
