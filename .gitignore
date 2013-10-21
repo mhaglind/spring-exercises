@@ -9,3 +9,4 @@ target
 .eclipse
 .classpath
 .project
+.springBeans
