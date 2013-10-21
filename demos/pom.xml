@@ -2,26 +2,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.arktekk.training.spring.labs</groupId>
-	<artifactId>labs-parent</artifactId>
+	<artifactId>demos-parent</artifactId>
 	<packaging>pom</packaging>
 	<version>1</version>
-	<name>Labs</name>
+	<name>Demos</name>
 	<url>https://github.com/mhaglind/spring-exercises</url>
 
 	<modules>
-		<module>xml-config/solution</module>
-		<module>annotation-config/solution</module>
-		<module>java-config/solution</module>
-		<module>bean-lifecycle/solution</module>
-		<module>profiles/solution</module>
-		<module>aop/solution</module>
-		<module>jdbc/solution</module>
-		<module>transaction-management/solution</module>
-		<module>mvc/solution</module>
-		<module>security/solution</module>
-		<module>rest/solution</module>
-		<module>jms/solution</module>
-		<module>scheduling/solution</module>
+		<module>webflow</module>
+		<module>ws</module>
+		<module>review</module>
 	</modules>
 
 	<properties>

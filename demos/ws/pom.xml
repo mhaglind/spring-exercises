@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>no.arktekk.training.spring.labs</groupId>
-		<artifactId>labs-parent</artifactId>
+		<artifactId>demos-parent</artifactId>
 		<version>1</version>
-		<relativePath>../../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>webflow-solution</artifactId>
-	<name>Demo :: WebFlow</name>
+	<artifactId>ws-demo</artifactId>
+	<name>Demo :: Web Service</name>
 
 	<dependencies>
 		<!-- Spring Dependencies -->
@@ -93,15 +93,29 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- WebFlow -->
+		<!-- ReST -->
 		<dependency>
-			<groupId>org.springframework.webflow</groupId>
-			<artifactId>org.springframework.webflow</artifactId>
-			<version>2.3.0.RELEASE</version>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>com.springsource.javax.xml.bind</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.oxm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>com.springsource.javax.validation</artifactId>
+			<version>1.0.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>com.springsource.org.hibernate.validator</artifactId>
+			<version>4.1.0.GA</version>
 		</dependency>
 
 	</dependencies>
-
 	<repositories>
 		<repository>
 			<id>com.springsource.repository.bundles.release</id>
