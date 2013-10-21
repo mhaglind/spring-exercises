@@ -6,16 +6,15 @@ import no.arktekk.training.spring.service.AuctionService;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
+ * @author <a href="mailto:marten@haglind.com">Marten Haglind</a>
  */
 public class DefaultAuctionService implements AuctionService {
-    private final AuctionRepository auctionRepository;
-
-    public DefaultAuctionService(AuctionRepository auctionRepository) {
-        this.auctionRepository = auctionRepository;
-    }
-
+	
+    private AuctionRepository auctionRepository;
 
     public List<Auction> allRunningAuctions() {
         return auctionRepository.listAllRunningAuctions();
@@ -24,4 +23,9 @@ public class DefaultAuctionService implements AuctionService {
     public Auction findById(Double auctionId) {
         return auctionRepository.findById(auctionId);
     }
+
+	public void setAuctionRepository(AuctionRepository auctionRepository) {
+		this.auctionRepository = auctionRepository;
+	}
+    
 }
