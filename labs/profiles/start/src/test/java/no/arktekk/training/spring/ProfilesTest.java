@@ -11,7 +11,6 @@ import no.arktekk.training.spring.service.AuctionService;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
 
 /**
  * @author <a href="mailto:marten@haglind.com">Marten Haglind</a>
@@ -61,8 +60,8 @@ public class ProfilesTest {
 	 * Configure an additional version of the repository: - Add a new
 	 * configuration file: repository-prod.ctx.xml - In the new file add a bean
 	 * definition of KeyedAuctionRepository. Give it the name
-	 * 'auctionRepository'.
-	 * Note that the bean has a property 'initialCapacity' that needs to be set.
+	 * 'auctionRepository'. Note that the bean has a property 'initialCapacity'
+	 * that needs to be set.
 	 */
 	@Test
 	public void step_4() {
@@ -118,21 +117,14 @@ public class ProfilesTest {
 		// TODO: Create and return an application context,
 		// load all files called xxx-ctx.cml from classpath.
 		// Hint: "classpath:/*-ctx.xml"
-		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-		ctx.load("classpath:/*-ctx.xml");
-		ctx.refresh();
-		return ctx;
+		return null;
 	}
 
 	private ApplicationContext createSpringContainer(String profile) {
 		// TODO: Create and return an app context as above
 		// Set the active profile on the context to the profile name
 		// given as a method parameter.
-		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-		ctx.getEnvironment().setActiveProfiles(profile);
-		ctx.load("classpath:/*-ctx.xml");
-		ctx.refresh();
-		return ctx;
+		return null;
 	}
 
 	private AuctionRepository lookupAuctionRepository(ApplicationContext ctx) {
