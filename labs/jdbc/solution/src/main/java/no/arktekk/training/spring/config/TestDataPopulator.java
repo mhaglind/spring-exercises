@@ -83,7 +83,7 @@ public class TestDataPopulator {
 				.print(now.plusDays(10).toDate(), no_NO);
 
 		template.update("insert into Auctions values(1,1200,'" + starts + "','"
-				+ ends + "','Mint progressive rock albums')");
+				+ ends + "','Mint prog rock albums')");
 		template.update("insert into Auctions values(2,40,'" + starts + "','"
 				+ ends + "','Boring pop records')");
 		template.update("insert into Auctions values(3,40,'" + starts + "','"
