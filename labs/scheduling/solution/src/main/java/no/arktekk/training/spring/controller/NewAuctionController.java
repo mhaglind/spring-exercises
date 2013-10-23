@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
+ * @author <a href="mailto:marten@haglind.com">Marten Haglind</a>
  */
 @Controller
 public class NewAuctionController {
@@ -35,14 +35,14 @@ public class NewAuctionController {
 
 		DateTime now = new DateTime();
 		auctionService.newAuction(new Auction(null, price, description, now
-                .plusDays(-1), now.plusDays(7), new ArrayList<Album>()));
+				.plusDays(-1), now.plusDays(7), new ArrayList<Album>()));
 
-        List<AuctionForm> forms = new ArrayList<AuctionForm>();
-        for (Auction auction : auctionService.allRunningAuctions()) {
-            forms.add(asAuctionForm.apply(auction));
-        }
-        model.addAttribute("auctions", forms);
-        
+		List<AuctionForm> forms = new ArrayList<AuctionForm>();
+		for (Auction auction : auctionService.allRunningAuctions()) {
+			forms.add(asAuctionForm.apply(auction));
+		}
+		model.addAttribute("auctions", forms);
+
 		return "index";
 	}
 

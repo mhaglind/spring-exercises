@@ -14,9 +14,11 @@ public class AuctionCounter {
 	@Autowired
 	AuctionRepository repo;
 
-	@Scheduled(fixedRate=8000)
+	@Scheduled(fixedRate = 10000)
 	public void countAuctions() {
-		System.out.println(new Date() + " there are " +
-				repo.listAllRunningAuctions().size() + " running auctions.");
+		int nrOfAuctions = repo.listAllRunningAuctions().size();
+		System.out.println(new StringBuffer().append(new Date())
+				.append(" there are ").append(nrOfAuctions)
+				.append(" running auctions."));
 	}
 }
