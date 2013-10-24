@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.List;
@@ -148,6 +149,8 @@ public class MvcTest {
 	}
 
 	/**
+	 * TODO
+	 * 
 	 * Finally, configure the web.xml and configure: A DispatcherServlet with
 	 * the name auction (to load the auction-servlet.xml) A
 	 * ContextLoaderListener (to load the applicationContext.xml) A
@@ -161,7 +164,7 @@ public class MvcTest {
 	 */
 	@Test
 	public void step_10() {
-
+		fail();
 	}
 
 	/**
