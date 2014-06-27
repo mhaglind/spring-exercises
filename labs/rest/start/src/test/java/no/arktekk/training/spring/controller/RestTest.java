@@ -157,7 +157,7 @@ public class RestTest {
 		String xml = "<auction>" +
 				"<minimumPrice>1200.0</minimumPrice>" +
 				"<description>Mint prog rock albums</description>" +
-				"<expiresDateTime>2011-05-13 12:00:00</expiresDateTime>" +
+				"<expiresDateTime>2050-05-13 12:00:00</expiresDateTime>" +
 				"<startDateTime>2011-04-23 12:00:00</startDateTime>" +
 				"<albums/>" +
 				"</auction>";
