@@ -10,6 +10,10 @@
 	<artifactId>webflow-demo</artifactId>
 	<name>Demo :: WebFlow</name>
 
+	<properties>
+		<spring.version>3.0.5.RELEASE</spring.version>
+	</properties>
+	
 	<dependencies>
 		<!-- Spring Dependencies -->
 		<dependency>
