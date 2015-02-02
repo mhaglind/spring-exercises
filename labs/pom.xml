@@ -25,10 +25,8 @@
 	</modules>
 
 	<properties>
-		<!-- 3.2.4.RELEASE -->
-		<spring.version>4.0.5.RELEASE</spring.version>
-		<jetty.version>7.3.0.v20110203</jetty.version>
-		<jsp.version>2.1.v20100127</jsp.version>
+		<spring.version>4.1.4.RELEASE</spring.version>
+		<jetty.version>9.2.7.v20150116</jetty.version>
 		<aspectj.version>1.7.1</aspectj.version>
 	</properties>
 
@@ -36,7 +34,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
