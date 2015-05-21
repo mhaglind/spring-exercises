@@ -19,7 +19,7 @@
           p:suffix=".jspx"/>
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-          p:basename="labels"
+          p:basename="server/labels"
           p:useCodeAsDefaultMessage="true"/>
 
 </beans>
