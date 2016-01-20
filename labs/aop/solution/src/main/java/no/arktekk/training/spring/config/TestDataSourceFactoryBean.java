@@ -1,9 +1,9 @@
 package no.arktekk.training.spring.config;
 
-import org.apache.commons.dbcp.BasicDataSource;
-import org.springframework.beans.factory.FactoryBean;
-
 import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.FactoryBean;
 
 /**
  * Creates by default a H2 inmemory datasource.
@@ -37,7 +37,7 @@ public class TestDataSourceFactoryBean implements FactoryBean<DataSource> {
 
     @Override
     public DataSource getObject() throws Exception {
-        BasicDataSource dataSource = new BasicDataSource();
+        BasicDataSource dataSource = new org.apache.commons.dbcp2.BasicDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(url);
         dataSource.setUsername(userName);

@@ -1,16 +1,16 @@
 package no.arktekk.training.spring.config;
 
-import org.joda.time.DateTime;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import static no.arktekk.training.spring.util.DatabaseUtils.no_NO;
+import static no.arktekk.training.spring.util.DatabaseUtils.timeStampFormatter;
 
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static no.arktekk.training.spring.util.DatabaseUtils.no_NO;
-import static no.arktekk.training.spring.util.DatabaseUtils.timeStampFormatter;
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+
+import org.joda.time.DateTime;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  * Will by default, if registered as a bean in the container, create neccecary
@@ -23,13 +23,13 @@ import static no.arktekk.training.spring.util.DatabaseUtils.timeStampFormatter;
  */
 public class TestDataPopulator {
     private final DataSource dataSource;
-    private final SimpleJdbcTemplate template;
+    private final JdbcTemplate template;
     private boolean createTestData = true;
     private boolean testDataInitialized = false;
 
     public TestDataPopulator(DataSource dataSource) {
         this.dataSource = dataSource;
-        this.template = new SimpleJdbcTemplate(dataSource);
+        this.template = new JdbcTemplate(dataSource);
     }
 
     public void setCreateTestData(boolean createTestData) {

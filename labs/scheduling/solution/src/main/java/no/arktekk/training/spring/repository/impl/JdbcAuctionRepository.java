@@ -1,5 +1,12 @@
 package no.arktekk.training.spring.repository.impl;
 
+import static no.arktekk.training.spring.util.DatabaseUtils.no_NO;
+import static no.arktekk.training.spring.util.DatabaseUtils.timeStampFormatter;
+
+import java.util.List;
+
+import javax.sql.DataSource;
+
 import no.arktekk.training.spring.domain.Auction;
 import no.arktekk.training.spring.mapper.AuctionMapper;
 import no.arktekk.training.spring.repository.AuctionRepository;
@@ -7,15 +14,7 @@ import no.arktekk.training.spring.repository.AuctionRepository;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import javax.sql.DataSource;
-
-import java.util.List;
-
-import static no.arktekk.training.spring.util.DatabaseUtils.no_NO;
-import static no.arktekk.training.spring.util.DatabaseUtils.timeStampFormatter;
 
 
 /**
