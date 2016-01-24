@@ -1,0 +1,18 @@
+[
+	{ 
+		"_class" : "com.haglind.User",
+		"name" : "Kalle"
+	},
+	{ 
+		"_class" : "com.haglind.User",
+	 	"name" : "Olle"
+	},
+	{ 
+		"_class" : "com.haglind.User",
+	 	"name" : "Nils"
+	},
+	{ 
+		"_class" : "com.haglind.User",
+	 	"name" : "Niklas"
+	}
+]
