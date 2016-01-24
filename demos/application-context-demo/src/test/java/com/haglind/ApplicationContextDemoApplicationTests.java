@@ -47,4 +47,5 @@ public class ApplicationContextDemoApplicationTests {
 		assertEquals(numberOfEvents + 1, listener.numberOfEvents);
 	
 	}
+	
 }
