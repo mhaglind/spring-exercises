@@ -17,6 +17,9 @@ public class ApplicationContextDemoApplicationTests {
 	@Autowired
 	LocalMessageServiceBean bean;
 
+	@Autowired
+	EventMessageListener listener;
+	
 	@Test
 	public void contextLoads() {
 	}
@@ -33,6 +36,15 @@ public class ApplicationContextDemoApplicationTests {
 		assertEquals("Hej", bean.getMessage("general.greeting"));
 		assertEquals("Ett problem av typen i/o har uppstått i modulen system-core!",
 				bean.getMessage("general.problem", "i/o", "system-core"));
-
+		
+	}
+	
+	@Test
+	public void testApplicationEvents() {
+		
+		long numberOfEvents = listener.numberOfEvents;
+		bean.getMessage("general.greeting");
+		assertEquals(numberOfEvents + 1, listener.numberOfEvents);
+	
 	}
 }

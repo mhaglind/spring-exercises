@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +16,14 @@ public class LocalMessageServiceBean {
 
 	@Autowired
 	Locale locale;
+	
+	@Autowired
+	ApplicationEventPublisher publisher;
 
 	public String getMessage(String key, Object... args) {
 		MessageSource messages = (MessageSource) ctx;
-		return messages.getMessage(key, args, locale);
+		String message = messages.getMessage(key, args, locale);
+		publisher.publishEvent(new MessageEvent(this, message));
+		return message;
 	}
 }
