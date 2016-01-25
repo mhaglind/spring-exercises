@@ -16,7 +16,6 @@ public class EventMessageListener implements ApplicationListener<MessageEvent> {
 
 	@Override
 	public void onApplicationEvent(MessageEvent event) {
-		System.out.println(event);
 		numberOfEvents++;
 	}
 
