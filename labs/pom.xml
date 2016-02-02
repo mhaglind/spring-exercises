@@ -16,6 +16,7 @@
     <module>profiles/solution</module>
     <module>aop/solution</module>
     <module>jdbc/solution</module>
+    <module>jpa/solution</module>
     <module>transaction-management/solution</module>
     <module>mvc/solution</module>
     <module>security/solution</module>
@@ -26,7 +27,7 @@
 
   <properties>
     <spring.version>4.2.4.RELEASE</spring.version>
-    <spring.boot.version>1.3.1.RELEASE</spring.boot.version>
+    <spring.boot.version>1.3.2.RELEASE</spring.boot.version>
 
     <junit.version>4.12</junit.version>
     <mockito.version>1.10.19</mockito.version>
