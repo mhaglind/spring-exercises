@@ -13,7 +13,6 @@ import java.util.List;
 public class DefaultAuctionService implements AuctionService {
     private final AuctionRepository auctionRepository;
 
-    @Autowired
     public DefaultAuctionService(AuctionRepository auctionRepository) {
         this.auctionRepository = auctionRepository;
     }
