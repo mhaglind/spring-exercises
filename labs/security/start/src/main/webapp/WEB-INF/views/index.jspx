@@ -3,8 +3,7 @@
 	xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
-	xmlns:s="http://www.springframework.org/tags"
-	xmlns:sec="http://www.springframework.org/security/tags">
+	xmlns:s="http://www.springframework.org/tags">
 
 	<jsp:directive.page contentType="text/html;charset=utf-8"
 		pageEncoding="UTF-8" />
@@ -28,23 +27,19 @@
 			</table>
 
 			<br />
-			<c:set var="username">
-				<sec:authentication property="principal.username" />
-			</c:set>
-			<c:set var="logoutUrl">
-				<c:url value='/j_spring_security_logout' />
-			</c:set>
-
+			
+			<c:set var="displayname" value="${username}"/>
+				
 			<c:choose>
-				<c:when test="${not empty username}">
-					<i>Logged in as ${username}</i>
+				<c:when test="${not empty displayname}">
+					<i>Logged in as ${displayname}</i>
 				</c:when>
 				<c:otherwise>
 					<i>Unknown user</i>
 				</c:otherwise>
 			</c:choose>
 			<br />
-			<a href="${logoutUrl}">Logout</a>
+			<a href="/logout">Logout</a>
 
 		</layout:page-body>
 

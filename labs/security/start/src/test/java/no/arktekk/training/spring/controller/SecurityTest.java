@@ -19,10 +19,10 @@ public class SecurityTest {
 	 * </code>
 	 * 
 	 * TODO: In users.properties configure two users. One with ROLE_USER and one
-	 * with ROLE_AUCTIONEER. Hint: username=password,ROLE_USER
+	 * with both ROLE_USER and ROLE_AUCTIONEER. Hint: username=password,ROLE_USER
 	 * 
 	 * TODO: In applicationContext.xml: Add a <security:http> tag containing a
-	 * login configuration <security:form-login login-page="/login/login.jsp"/>.
+	 * login configuration <security:form-login login-page="/htm/login.htm"/>.
 	 * 
 	 * TODO: In applicationContext.xml: Configure intercept urls inside
 	 * <security:http>. Rules: To access the application (except the login

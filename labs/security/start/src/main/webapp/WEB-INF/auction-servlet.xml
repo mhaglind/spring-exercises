@@ -7,27 +7,7 @@
 	                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	                        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd 
 	                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.1.xsd">
-<!-- 
-	<security:http access-denied-page="/login/access_denied.html">
 
-		<security:form-login login-page="/login/login.jsp" />
-		<security:logout logout-success-url="/login/logout.html" />
-
-		<security:intercept-url pattern="/login/*"
-			filters="none" />
-		<security:intercept-url pattern="/*"
-			access="IS_AUTHENTICATED_FULLY" />
-		<security:intercept-url pattern="/auctions/"
-			access="AUCTIONEER" />
-
-	</security:http>
-
-	<security:authentication-provider>
-	
-		<security:user-service properties="/WEB-INF/users.properties" />
-
-	</security:authentication-provider>
- -->
 	<mvc:annotation-driven />
 
 	<context:component-scan base-package="no.arktekk.training.spring"
