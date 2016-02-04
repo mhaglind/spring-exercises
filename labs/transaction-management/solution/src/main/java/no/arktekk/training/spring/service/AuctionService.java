@@ -9,4 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface AuctionService {
     void newAuction(Auction auction);
+
+	void storeTwoAuctions(Auction auction1, Auction auction2);
 }

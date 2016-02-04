@@ -22,4 +22,11 @@ public class AuctionServiceImpl implements AuctionService {
     public void newAuction(Auction auction) {
         auctionRepository.store(auction);
     }
+    
+    @Override
+    public void storeTwoAuctions(Auction auction1, Auction auction2) {
+        auctionRepository.store(auction1);
+        auctionRepository.store(auction2);
+    }
+    
 }
